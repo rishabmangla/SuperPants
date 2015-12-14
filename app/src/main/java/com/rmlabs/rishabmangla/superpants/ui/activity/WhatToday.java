@@ -40,6 +40,8 @@ public class WhatToday extends AppCompatActivity implements View.OnClickListener
     private int numberOfTops = 0;
     private int numberOfPants = 0;
 
+    private final int IMAGE_SIZE = 256;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,7 @@ public class WhatToday extends AppCompatActivity implements View.OnClickListener
         setPants();
     }
 
+    //initializing uri lists and total image count
     private void initialize() {
         StoreSession ssn = new StoreSession(getApplicationContext());
         mTopsUriList = ssn.retrieveArray(StoreSession.TOPS_URI);
@@ -71,7 +74,6 @@ public class WhatToday extends AppCompatActivity implements View.OnClickListener
         int serialNumber = r.nextInt(numberOfTops);
         try {
             mCurrentTopUri = Uri.parse(mTopsUriList[serialNumber]);
-//            Picasso.with(this).load(mCurrentTopUri).into(mRandomTop);
             Picasso.Builder builder = new Picasso.Builder(this);
             builder.listener(new Picasso.Listener() {
                 @Override
@@ -79,7 +81,7 @@ public class WhatToday extends AppCompatActivity implements View.OnClickListener
                     exception.printStackTrace();
                 }
             });
-            builder.build().load(mCurrentTopUri).resize(256, 256).centerCrop().into(mRandomTop);
+            builder.build().load(mCurrentTopUri).resize(IMAGE_SIZE, IMAGE_SIZE).centerCrop().into(mRandomTop);
         } catch (IllegalArgumentException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -102,7 +104,7 @@ public class WhatToday extends AppCompatActivity implements View.OnClickListener
                     exception.printStackTrace();
                 }
             });
-            builder.build().load(mCurrentPantsUri).resize(256,256).centerCrop().into(mRandomPants);
+            builder.build().load(mCurrentPantsUri).resize(IMAGE_SIZE,IMAGE_SIZE).centerCrop().into(mRandomPants);
         } catch (IllegalArgumentException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

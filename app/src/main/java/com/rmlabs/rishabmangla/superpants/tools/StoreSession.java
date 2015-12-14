@@ -37,24 +37,6 @@ public class StoreSession {
         mEditor.apply();
     }
 
-    public void storeVariable(String key, String value) {
-        mEditor = mSharedPreference.edit();
-        mEditor.putString(key, value);
-        mEditor.apply();
-    }
-
-    public void storeVariable(String key, boolean value) {
-        mEditor = mSharedPreference.edit();
-        mEditor.putBoolean(key, value);
-        mEditor.apply();
-    }
-
-    public void storeVariable(String key, Set<String> value) {
-        mEditor = mSharedPreference.edit();
-        mEditor.putStringSet(key, value);
-        mEditor.apply();
-    }
-
     public void storeArray(String key, String value) {
         mEditor = mSharedPreference.edit();
         String default_val = mSharedPreference.getString(key, null);
@@ -66,38 +48,15 @@ public class StoreSession {
         mEditor.apply();
     }
 
-    public void setListString(String key, List<String> stringList) {
-        String[] myStringList = stringList.toArray(new String[stringList.size()]);
-        mSharedPreference.edit().putString(key, TextUtils.join("‚‗‚", myStringList)).apply();
-    }
-
     public String[] retrieveArray(String key) {
         String val = mSharedPreference.getString(key, null);
         if (val == null) return new String[]{};
         else return val.split(DEFAULT_DELIMITER);
     }
 
-    public ArrayList<String> getListString(String key) {
-        return new ArrayList<String>(Arrays.asList(TextUtils.split(mSharedPreference.getString(key, ""), "‚‗‚")));
-    }
-
-
-    public String retrieveVariable(String key) {
-        return mSharedPreference.getString(key, null);
-    }
-
-    public String retrieveVariable(String key, String defaultValue) {
-        return mSharedPreference.getString(key, defaultValue);
-    }
-
-    public boolean retrieveBoolean(String key, boolean defaultValue) {
-        return mSharedPreference.getBoolean(key, defaultValue);
-    }
-
     public String retrieveSessiontoken() {
         return mSharedPreference.getString(SSNTOKEN, null);
     }
-
 
     public void clearData() {
         mEditor = mSharedPreference.edit();

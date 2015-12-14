@@ -66,18 +66,22 @@ public class Utils {
      * Creating file uri to store image
      */
     public static Uri getOutputMediaFileUri() {
-        return Uri.fromFile(getOutputMediaFile());
+        try {
+            return Uri.fromFile(getOutputMediaFile());
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
     /**
      * returning image
      */
     public static File getOutputMediaFile() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            Log.d("getOutputMediaFile()", "No external storage state");
-            return null;
-        }
+//        String state = Environment.getExternalStorageState();
+//        if (Environment.MEDIA_MOUNTED.equals(state)) {
+//            Log.d("getOutputMediaFile()", "No external storage state");
+//            return null;
+//        }
 
         // External sdcard location
         File mediaStorageDir = new File(

@@ -37,7 +37,7 @@ public class Bookmarks extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmarks);
         ButterKnife.bind(this);
-        mToolbar.setTitle(R.string.bookmarks);
+        mToolbar.setTitle(R.string.title_activity_bookmarks);
         setSupportActionBar(mToolbar);
         setPager();
     }
@@ -72,6 +72,7 @@ public class Bookmarks extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //create img file with top and pants combined, and then share
     public void createImageFile() {
         View view = mViewPager;
         view.getRootView();
@@ -93,6 +94,7 @@ public class Bookmarks extends AppCompatActivity {
             picOut.close();
         } catch (Exception e) {
             e.printStackTrace();
+            Utils.showErrorMsg(this, getString(R.string.error_no_external_storage));
         }
         view.destroyDrawingCache();
     }

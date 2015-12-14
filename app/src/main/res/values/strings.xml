@@ -1,24 +1,37 @@
 <resources>
+
+    //Super Activity
     <string name="app_name">SuperPants</string>
-    <string name="action_share">Share</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="auth_facebook">Sign In with Facebook</string>
-    <string name="activity.authentication_page.toast.facebook_login_cancelled">Facebook login cancelled.</string>
-    <string name="activity.authentication_page.toast.facebook_login_error">Facebook login error.</string>
-    <string name="title_activity_what_today">WhatToday</string>
     <string name="no_pair">Please add a pair of clothes before asking us!</string>
     <string name="no_pants">Please add some pants so that we can show you the perfect match</string>
     <string name="no_top">Can\'t see no top in our inventory!!!</string>
-    <string name="image_capture_cancelled">User cancelled image capture</string>
-    <string name="image_capture_failed">Sorry! Failed to capture image</string>
+
+    //LoginActivity
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="authentication_page">Authentication</string>
+    <string name="auth_facebook">Sign In with Facebook</string>
+    <string name="facebook_app_id">156038404532801</string>
+    <string name="activity.authentication_page.toast.facebook_login_cancelled">Facebook login cancelled.</string>
+    <string name="activity.authentication_page.toast.facebook_login_error">Facebook login error.</string>
+
+    //Whatoday Activity
+    <string name="title_activity_what_today">WhatToday</string>
+    <string name="what_today_title">Our best match for you!</string>
     <string name="bookmarked_toast">This super pair of clothes has been bookmarked:-)</string>
     <string name="dislike_toast">No worries, showing another pair even more Super</string>
-    <string name="authentication_page">Authentication</string>
-    <string name="facebook_app_id">156038404532801</string>
-    <string name="what_today_title">Our best match for you!</string>
+
+    //Bookmarks Activity
     <string name="title_activity_bookmarks">Bookmarks</string>
-    <string name="bookmarks">Bookmarks</string>
+    <string name="action_share">Share</string>
     <string name="no_bookmarks">Kindly make a wish and a list.</string>
+
+    //Splash Screen
     <string name="pants">PANTS</string>
+
+    //Errors
+    <string name="image_capture_cancelled">User cancelled image capture</string>
+    <string name="image_capture_failed">Sorry! Failed to capture image</string>
     <string name="error_fail_image_save">Failed to save image</string>
+    <string name="error_no_external_storage">Not external storage found</string>
+
 </resources>

@@ -138,22 +138,26 @@ public class SuperActivity extends AppCompatActivity implements View.OnClickList
         startActivity(intent);
     }
 
+    //Creating intent chooser with camera and gallery options
     private void openImageIntent() {
         mOutputFileUri = Utils.getOutputMediaFileUri();
-        // Camera.
         final List<Intent> cameraIntents = new ArrayList<Intent>();
-        final Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        final PackageManager packageManager = getPackageManager();
-        final List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
-        for(ResolveInfo res : listCam) {
-            final String packageName = res.activityInfo.packageName;
-            final Intent intent = new Intent(captureIntent);
-            intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-            intent.setPackage(packageName);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, mOutputFileUri);
-            cameraIntents.add(intent);
+        if(mOutputFileUri != null) {
+            // Camera.
+            final Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            final PackageManager packageManager = getPackageManager();
+            final List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
+            for (ResolveInfo res : listCam) {
+                final String packageName = res.activityInfo.packageName;
+                final Intent intent = new Intent(captureIntent);
+                intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
+                intent.setPackage(packageName);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, mOutputFileUri);
+                cameraIntents.add(intent);
+            }
+        }else {
+            Utils.showErrorMsg(this, getString(R.string.error_no_external_storage));
         }
-
         // Filesystem.
         final Intent galleryIntent = new Intent();
         galleryIntent.setType("image/*");
